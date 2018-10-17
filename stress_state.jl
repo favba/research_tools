@@ -3,7 +3,7 @@
 using LinearAlgebra, ReadGlobal, FluidTensors
 
 function stress(S,o)
-    Threads.@threads for i in LinearIndices(S)
+    Threads.@threads for i in eachindex(S)
         @inbounds o[i] = stress_state(S[i])
     end
 end
