@@ -70,7 +70,6 @@ function grad(v1::AbstractString,v2::AbstractString,v3::AbstractString,S::Abstra
     write(string(S,"13"),sym.c.xz.r)
     write(string(S,"22"),sym.c.yy.r)
     write(string(S,"23"),sym.c.yz.r)
-    write(string(S,"33"),(-).(sym.c.xx.r .+ sym.c.yy.r))
     
     write(string(W,"12"),asym.c.z.r)
     write(string(W,"13"),-asym.c.y.r)
