@@ -9,8 +9,13 @@ function stress(S,o)
 end
 
 function run()
-    inp = (SymTenArray=>(ARGS[1:6]...,),)
-    out = (Vector{Float64}=>(ARGS[7],),)
+    if length(ARGS) == 7
+        inp = (SymTenArray=>(ARGS[1:6]...,),)
+        out = (Vector{Float64}=>(ARGS[7],),)
+    elseif length(ARGS) == 6
+        inp = (SymTrTenArray=>(ARGS[1:5]...,),)
+        out = (Vector{Float64}=>(ARGS[6],),)
+    end
     doinchunks(stress,input=inp,output=out)
 end
 
