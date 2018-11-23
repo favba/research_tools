@@ -38,7 +38,7 @@ function grad_vec!(sym::SymTrTenField,asym::VectorField,vec::VectorField)
                 ∇ = im*vec.k[i,j,l]
                 v = vec[i,j,l]
                 sym[i,j,l] = symouter(∇,v)
-                asym[i,j,l] = 0.5*∇×v
+                asym[i,j,l] = (∇×v)/2
             end
         end
     end
@@ -63,7 +63,7 @@ function grad(s::AbstractString,v::AbstractString)
 end
 
 function grad(v1::AbstractString,v2::AbstractString,v3::AbstractString,S::AbstractString,W::AbstractString)
-    vec = VectorField{Float64}(v1,v2,v3)
+    vec = VectorField(v1,v2,v3)
     sym,asym = grad_vec(vec)
     write(string(S,"11"),sym.c.xx.r)
     write(string(S,"12"),sym.c.xy.r)
