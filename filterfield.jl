@@ -35,9 +35,9 @@ function main(N::Int,fil::String,inputfiles::NTuple{NT,AbstractString}) where {N
     @info("Saving filtered field in $outfilename")
     write(outfilename,field.r)
  
-    N > 1 && for inputfile in inputfiles[2:end]
+    NT > 1 && for inputfile in inputfiles[2:end]
 
-        readfield!(inputfile,field.rr)
+        read!(inputfile,field)
 
         @info("Filtering File $inputfile")
         fourier!(field)
