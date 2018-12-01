@@ -3,5 +3,5 @@
 using ReadGlobal,GR
 
 d = readcsv("Stats.txt")
-plot(d.time,d[Symbol(ARGS[1])])
+plot(d.time,d[Symbol(ARGS[1])],xlabel="time",ylabel=ARGS[1])
 readline(stdin)
