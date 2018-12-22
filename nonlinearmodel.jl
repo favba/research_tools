@@ -9,7 +9,7 @@ using LinearAlgebra, ReadGlobal, FluidTensors
 
 function nonlinearmodel(T,S,W,alpha,ratio,model,alpha2,ratio2,model2)
     Threads.@threads for i in eachindex(S)
-        @inbounds begin
+        @inbounds @fastmath begin
             ∇u = S[i]+W[i]
             nmT = traceless(symmetric(dot(∇u,∇u')))
             lalpha,Tm = prop_decomp(T[i],nmT)
