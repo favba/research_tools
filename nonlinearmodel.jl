@@ -13,15 +13,15 @@ function nonlinearmodel(T,S,W,alpha,ratio,model,alpha2,ratio2,model2)
             ∇u = S[i]+W[i]
             nmT = traceless(symmetric(dot(∇u,∇u')))
             lalpha,Tm = prop_decomp(T[i],nmT)
-            ratio[i] = (nmT:nmT)/(T[i]:T[i])
+            ratio[i] = (Tm:Tm)/(T[i]:T[i])
             alpha[i] = lalpha
-            model[i] = nmT
+            model[i] = Tm
 
             nmT2 = traceless(symmetric(dot(∇u',∇u)))
             lalpha2,Tm2 = prop_decomp(T[i],nmT2)
-            ratio2[i] = (nmT2:nmT2)/(T[i]:T[i])
+            ratio2[i] = (Tm2:Tm2)/(T[i]:T[i])
             alpha2[i] = lalpha2
-            model2[i] = nmT2
+            model2[i] = Tm2
        end
     end
 end
