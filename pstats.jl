@@ -1,8 +1,10 @@
 #!/usr/bin/env julia
 
-using ReadGlobal, Gaston
+using ReadGlobal, UnicodePlots
 
-d = readcsv("Stats.txt")
-plot(d.time,d[Symbol(ARGS[1])],xlabel="time",ylabel=ARGS[1])
-Gaston.llplot()
-readline(stdin)
+function main()
+    d = readcsv("Stats.txt")
+    show(lineplot(d.time,d[Symbol(ARGS[1])],xlabel="time",ylabel=ARGS[1]))
+end
+
+main()
