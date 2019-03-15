@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 
-# Script to compute the energy redistribution tensor
+# Script to compute the Lie product between A symmetric and antisymmetric tensor
 #
 # Usage: (Note that the 33 elements should not be inputed)
 #         |------------ input -----------||- output -| 
