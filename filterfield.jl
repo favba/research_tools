@@ -19,7 +19,10 @@ function main(N::Int,fil::String,inputfiles::NTuple{NT,AbstractString}) where {N
     elseif fil =="E"
         pathoutput = "./Filtered_Fields/Eyink/N$N"
         filterkernel = EyinkFilter(boxdim^2)
-    end
+    elseif fil =="S"
+        pathoutput = "./Filtered_Fields/SpectralBarrier/N$N"
+        filterkernel = SpectralBarrier(boxdim^2)
+   end
     
     field = ScalarField(inputfiles[1])
 
