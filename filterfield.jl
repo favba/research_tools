@@ -2,7 +2,7 @@
 
 using FluidFields, GlobalFileHelper, FieldFilters
 
-function main(N::Int,fil::String,inputfiles::NTuple{NT,AbstractString}) where {NT}
+function main(N::Real,fil::String,inputfiles::NTuple{NT,AbstractString}) where {NT}
 
     nx,ny,nz,lx,ly,lz = getdimsize()
     boxdim = N*2*lz*π/nz
@@ -55,4 +55,4 @@ function main(N::Int,fil::String,inputfiles::NTuple{NT,AbstractString}) where {N
     end
 end
 
-main(parse(Int,ARGS[1]),ARGS[2],(ARGS[3:end]...,))
+main(parse(Float64,ARGS[1]),ARGS[2],(ARGS[3:end]...,))
