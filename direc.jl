@@ -26,7 +26,7 @@ end
 function direcV(v,o1)
     Threads.@threads for i in eachindex(v)
         @inbounds begin
-            o1[i] = v.z/norm(v)
+            o1[i] = v[i].z/norm(v[i])
         end
     end
 end
