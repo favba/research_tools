@@ -3,12 +3,12 @@
 # Script to compute the vertical component of the eigenvectors of a Tensor
 #
 #                     input tensor           | output |
-# vertical_eigvec.jl T11 T12 T13 T22 T23 T33   direc
+# direc.jl T11 T12 T13 T22 T23 T33   direc
 #                     input tensor       |output |
-# vertical_eigvec.jl T11 T12 T13 T22 T23   direc
+# direc.jl T11 T12 T13 T22 T23   direc
 
 #                     input vector  | output |
-# vertical_eigvec.jl   v1  v2  v3     direc
+# direc.jl   v1  v2  v3     direc
 
 
 
