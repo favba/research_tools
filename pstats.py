@@ -20,4 +20,5 @@ for el in sys.argv[1:]:
 plt.xlabel("Time (s)")
 
 plt.legend()
+plt.grid()
 plt.show()
