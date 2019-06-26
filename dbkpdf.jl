@@ -22,16 +22,16 @@ function splitrange(lr,nt)
     return a
 end
 
-function dbkhist(field)
+function dbkhist(field,nb::Integer)
     vf = vec(field)
     sort!(vf)
-    x = zeros(100)
-    dx = zeros(99)
-    y = zeros(100)
-    errx =  zeros(100)
-    r = splitrange(length(vf),100)
+    x = zeros(nb)
+    dx = zeros((nb-1))
+    y = zeros(nb)
+    errx =  zeros(nb)
+    r = splitrange(length(vf),nb)
     
-    @inbounds for i in 1:100
+    @inbounds for i in 1:nb
         elr = r[i]
         ms = zero(eltype(vf))
 
@@ -60,7 +60,7 @@ function dbkhist(field)
 
     tv = zero(eltype(vf))
 
-    for i in 1:99
+    for i in 1:(nb-1)
         tv += y[i]*dx[i]
     end
 
@@ -69,7 +69,7 @@ function dbkhist(field)
     return x, y, errx
 end
 
-function main(file::String)
+function main(file::String,nbins::String="100")
     if testinput(file)
         field = readfield(file)
     else
@@ -78,8 +78,8 @@ function main(file::String)
         field = Vector{Float64}(undef,nn)
         read!(file,field)
     end
-    x,y,xr = dbkhist(field)
+    x,y,xr = dbkhist(field,parse(Int,nbins))
     writedlm(file*".dbkpdf.txt",zip(x,y,xr))
 end
 
-main(ARGS[1])
+main(ARGS...)
