@@ -3,7 +3,7 @@ using ReadGlobal, Statistics, Glob, DelimitedFiles
 
 function main()
 
-    R = 5000:50:16000
+    R = 5000:50:20000
     nR = length(R)
 
     filesH = getindex.(split.(glob("*.specH.0"),"."),1)
