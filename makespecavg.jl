@@ -1,9 +1,10 @@
 #!/usr/bin/env julia
 using ReadGlobal, Statistics, Glob, DelimitedFiles
 
-function main()
+function main(n1,n2,n3)
 
-    R = 5000:50:20000
+    #R = 5000:50:20000
+    R = n1:n2:n3
     nR = length(R)
 
     filesH = getindex.(split.(glob("*.specH.0"),"."),1)
@@ -40,4 +41,4 @@ function main()
 
 end
 
-main()
+main(parse(Int,ARGS[1]),parse(Int,ARGS[2]),parse(Int,ARGS[3]))
