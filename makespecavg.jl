@@ -21,7 +21,7 @@ function main(n1,n2,n3)
             auxh .+= readdlm(string(fh,r),Float64,dims=(lh,2))[:,2]
         end
         auxh ./= nR
-        writedlm(string(fh,"avg"),zip(kh,auxh))
+        writedlm(string(fh,"avg_",n1,"-",n3),zip(kh,auxh))
     end
 
     filesV = getindex.(split.(glob("*.specV.0"),"."),1)
@@ -36,7 +36,7 @@ function main(n1,n2,n3)
             auxv .+= readdlm(string(fv,r),Float64,dims=(lz,2))[:,2]
         end
         auxv ./= nR
-        writedlm(string(fv,"avg"),zip(kz,auxv))
+        writedlm(string(fv,"avg_",n1,"-",n3),zip(kz,auxv))
     end
 
 end
