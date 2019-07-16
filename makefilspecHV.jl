@@ -59,6 +59,16 @@ function makeHVf(file::String,filN::String,fil)
         end
     end
 
+    kc = inv(sqrt(fil.Δ²))*π
+
+    IX = findall(x->abs(x)>abs(kc),KX)
+    IY = findall(x->abs(x)>abs(kc),KY)
+    IZ = findall(x->abs(x)>abs(kc),KZ)
+
+    f3D[IX,:,:] .= 0.0
+    f3D[:,IY,:] .= 0.0
+    f3D[:,:,IZ] .= 0.0
+
     calculate_specHV(specH,specV,f3D,KX,KY,KZ,NX,YRANGE,ZRANGE)
     
     sf = split(file,".")
