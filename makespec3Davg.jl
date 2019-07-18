@@ -21,7 +21,7 @@ function main(R::StepRange)
             auxh .+= read!(string(fh,r),aux2)
         end
         auxh ./= nR
-        write(string(fh,"avg"),auxh)
+        write(string(fh,"avg","_",R.start,"-",R.stop),auxh)
     end
 
 end
