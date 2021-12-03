@@ -28,7 +28,7 @@ function grad_scalar(scalar::ScalarField)
     return grad_scalar!(vec,scalar)
 end
 
-function grad_vec!(sym::SymTrTenField,asym::VectorField,vec::VectorField)
+function grad_vec!(sym::SymTenField,asym::VectorField,vec::VectorField)
     isrealspace(vec) && fourier!(vec)
     setfourier!(sym)
     setfourier!(asym)
@@ -49,7 +49,7 @@ end
 
 function grad_vec(vec::VectorField)
     asym = similar(vec)
-    sym = SymTrTenField(similar(vec.c.x),similar(vec.c.x),similar(vec.c.x),similar(vec.c.x),similar(vec.c.x))
+    sym = SymTenField(similar(vec.c.x),similar(vec.c.x),similar(vec.c.x),similar(vec.c.x),similar(vec.c.x),similar(vec.c.x))
     return grad_vec!(sym,asym,vec)
 end
 
@@ -70,6 +70,7 @@ function grad(v1::AbstractString,v2::AbstractString,v3::AbstractString,S::Abstra
     write(string(S,"13",p),sym.c.xz.r)
     write(string(S,"22",p),sym.c.yy.r)
     write(string(S,"23",p),sym.c.yz.r)
+    write(string(S,"33",p),sym.c.zz.r)
     
     write(string(W,"12",p),asym.c.z.r)
     write(string(W,"13",p),-asym.c.y.r)

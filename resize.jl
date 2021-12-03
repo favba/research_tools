@@ -28,7 +28,7 @@ function resize(input::String,nnx::Int,nny::Int,nnz::Int)
     out = ScalarField{eltype(us.rr)}((nnx,nny,nnz),(lx,ly,lz))
     setfourier!(out)
     resize(us,out)
-    write(input*"_resized",out)
+    write(input*"_resized",out.r)
 end
 
 

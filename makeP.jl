@@ -23,8 +23,13 @@ function run()
     @assert all(dtypes[1] .=== dtypes)
     T = dtypes[1]
 
+    if length(ARGS) == 10
+	    out_posfix = ARGS[10]
+    else
+	    out_posfix = ""
+    end
     inp = (SymTrTenArray{T} => (ARGS[1:5]...,), AntiSymTenArray{T} => (ARGS[6:8]...,))
-    out = (SymTenArray{T} => (ARGS[9] .* ("11","12","13","22","23","33")),)
+    out = (SymTenArray{T} => (ARGS[9] .* ("11","12","13","22","23","33") .* out_posfix),)
     doinchunks(calc,input=inp,output=out)
 end
 
